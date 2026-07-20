@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+docs: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+name: BlockChalk authentication profile
+status: retired
+summary: >-
+  BlockChalk's published API surface was fully anonymous. The developer page documented three
+  read interfaces (XML, JSON, RSS) parameterized only by latitude and longitude, with no
+  API key, token, signature or registration step of any kind. Captured live responses from
+  /api/v0.6/chalks confirm unauthenticated public reads.
+schemes: []
+security_requirements:
+  global: none
+  notes: >-
+    OpenAPI security is an empty array in openapi/blockchalk-chalks-openapi.yml, reflecting
+    the documented anonymous access model.
+registration:
+  required: false
+  developer_signup: false
+  key_provisioning: none
+oauth2: false
+openid_connect: false
+mutual_tls: false
+write_access:
+  published: false
+  notes: >-
+    Only read interfaces were ever published. Posting a chalk was done through the BlockChalk
+    mobile clients, and no public write API or credential model was documented.
+caveats:
+  - The service is retired; this profile is historical and not actionable.
