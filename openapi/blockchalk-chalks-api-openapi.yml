@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: BlockChalk API (historical) chalks API
+  description: "Reconstruction of the public read-only BlockChalk API as it was documented by BlockChalk on its own /developers page and as observed in captured live responses. BlockChalk was a location-based neighborhood messaging service (2009-2012); a \"chalk\" was a short message pinned to a geographic point. The service is retired and none of these hosts resolve today (blockchalk.com has no active nameservers as of 2026-07-20), so this specification is historical documentation, not an integrable API.\nEndpoint shapes come verbatim from the archived BlockChalk developer page:\n  XML:  http://blockchalk.com/api/xml/chalk?long=[longitude]&lat=[latitude]\n  JSON: http://blockchalk.com/api/json/chalk?long=[longitude]&lat=[latitude]\n  RSS:  http://blockchalk.com/rss/chalk?long=[longitude]&lat=[latitude]\nA later versioned path, /api/v0.6/chalks/{latitude},{longitude}, is evidenced by captured 200 responses (GeoRSS 2.0). BlockChalk itself warned these interfaces were \"early prototypes and are likely to change\"."
+  version: 0.6.0
+  x-status: retired
+  x-provenance:
+    generated: '2026-07-20'
+    method: derived
+    source:
+    - http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+    - http://web.archive.org/web/20100509100042/http://blockchalk.com/api/v0.6/chalks/37.7749295,-122.4194155
+    - http://web.archive.org/web/20100530070133/http://blockchalk.com/api/v0.6/chalks/40.708682,-74.00116
+  contact:
+    name: API Evangelist
+    email: kin@apievangelist.com
+servers:
+- url: http://blockchalk.com
+  description: Historical production host (retired; DNS no longer resolves)
+security: []
+tags:
+- name: chalks
+  description: Location-pinned neighborhood messages.
+paths:
+  /api/v0.6/chalks/{coordinates}:
+    get:
+      operationId: getChalksByCoordinates
+      tags:
+      - chalks
+      summary: List chalks near a coordinate pair
+      description: Returns the chalks posted near a latitude/longitude, as a GeoRSS 2.0 feed. The path parameter is a single comma-joined "latitude,longitude" segment, e.g. 37.7749295,-122.4194155. Observed responses carry rss/channel/item entries with a georss:point, guid, link, title, pubDate and a human-readable proximity description ("on this block", "within a few blocks", "in South of Market").
+      parameters:
+      - name: coordinates
+        in: path
+        required: true
+        description: Comma-joined latitude and longitude, e.g. "37.7749295,-122.4194155".
+        schema:
+          type: string
+          pattern: ^-?\d+(\.\d+)?,-?\d+(\.\d+)?$
+        example: 37.7749295,-122.4194155
+      responses:
+        '200':
+          description: A GeoRSS 2.0 feed of nearby chalks.
+          content:
+            application/rss+xml:
+              schema:
+                type: string
+                description: RSS 2.0 document with the georss namespace.
+  /api/xml/chalk:
+    get:
+      operationId: getChalksXml
+      tags:
+      - chalks
+      summary: List chalks near a point (XML)
+      description: Documented on the BlockChalk developer page as the XML interface.
+      parameters:
+      - $ref: '#/components/parameters/Longitude'
+      - $ref: '#/components/parameters/Latitude'
+      responses:
+        '200':
+          description: XML document of nearby chalks.
+          content:
+            application/xml:
+              schema:
+                type: string
+  /api/json/chalk:
+    get:
+      operationId: getChalksJson
+      tags:
+      - chalks
+      summary: List chalks near a point (JSON)
+      description: Documented on the BlockChalk developer page as the JSON interface. No JSON response body was captured before the service retired, so no response schema is asserted here.
+      parameters:
+      - $ref: '#/components/parameters/Longitude'
+      - $ref: '#/components/parameters/Latitude'
+      responses:
+        '200':
+          description: JSON document of nearby chalks. Payload shape not captured.
+          content:
+            application/json:
+              schema:
+                type: object
+  /rss/chalk:
+    get:
+      operationId: getChalksRss
+      tags:
+      - chalks
+      summary: Subscribe to chalks near a point (RSS)
+      description: Documented on the BlockChalk developer page as the RSS interface.
+      parameters:
+      - $ref: '#/components/parameters/Longitude'
+      - $ref: '#/components/parameters/Latitude'
+      responses:
+        '200':
+          description: RSS 2.0 feed of nearby chalks.
+          content:
+            application/rss+xml:
+              schema:
+                type: string
+components:
+  parameters:
+    Latitude:
+      name: lat
+      in: query
+      required: true
+      description: Latitude of the point to read chalks around.
+      schema:
+        type: number
+        format: double
+      example: 37.7749295
+    Longitude:
+      name: long
+      in: query
+      required: true
+      description: Longitude of the point to read chalks around.
+      schema:
+        type: number
+        format: double
+      example: -122.4194155
