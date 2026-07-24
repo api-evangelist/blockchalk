@@ -1,0 +1,69 @@
+# BlockChalk
+
+> BlockChalk was a location-based neighborhood messaging service (2009-2012). Users with
+> GPS-enabled phones left short public messages called "chalks" pinned to a geographic point,
+> and read the chalks other people had left nearby. The company was founded by Stephen Hood
+> (former Delicious product lead) and Dave Baggeroer (Stanford Institute of Design), and
+> raised $1M in seed funding in May 2010 from Joshua Schachter, Battery Ventures, Founder
+> Collective, Harrison Metal, Mitch Kapor and others.
+
+IMPORTANT: BlockChalk is RETIRED. The product is gone and blockchalk.com does not resolve —
+the domain registration is active through 2028 but its delegated nameservers return no
+records. There is no live API. Everything in this repository is historical documentation
+reconstructed from the provider's own archived developer page and from captured live
+responses. Do not attempt to integrate with BlockChalk.
+
+## Historical API surface
+
+BlockChalk published three read-only, anonymous interfaces on its /developers page, all
+parameterized by a longitude/latitude pair:
+
+- XML: http://blockchalk.com/api/xml/chalk?long=[longitude]&lat=[latitude]
+- JSON: http://blockchalk.com/api/json/chalk?long=[longitude]&lat=[latitude]
+- RSS: http://blockchalk.com/rss/chalk?long=[longitude]&lat=[latitude]
+
+A later versioned path is evidenced by captured 200 responses:
+
+- GeoRSS: http://blockchalk.com/api/v0.6/chalks/[latitude],[longitude]
+
+BlockChalk's own caveat on that page: "these interfaces are early prototypes and are likely
+to change in the future."
+
+There was no authentication, no API key, no registration, no pagination, no rate-limit
+signaling, no documented error contract, no HTTPS endpoint, and no write API. Chalks were
+posted through the mobile clients only.
+
+## Artifacts in this repository
+
+- [OpenAPI (reconstruction)](openapi/blockchalk-chalks-openapi.yml): the four documented and
+  observed read endpoints, derived from the archived developer page and captured responses.
+- [Overlay](overlays/blockchalk-chalks-overlay.yaml): API Evangelist annotations marking the
+  retirement posture and evidence links.
+- [Lifecycle](lifecycle/blockchalk-lifecycle.yml): retirement status, version history, live
+  probe results and a dated timeline.
+- [Authentication](authentication/blockchalk-authentication.yml): the anonymous access model.
+- [Conventions](conventions/blockchalk-conventions.yml): cross-cutting runtime semantics,
+  mostly a record of what was never published.
+- [Data model](data-model/blockchalk-data-model.yml): the Chalk entity and the observed
+  proximity and neighborhood vocabulary.
+- [Conformance](conformance/blockchalk-conformance.yml): RSS 2.0 and GeoRSS conformance;
+  no OAuth, no compliance program.
+- [Packages](packages/blockchalk-packages.yml): no first-party SDK ever existed; one
+  community webOS client.
+- [Well-known](well-known/blockchalk-well-known.yml): probe results, all unreachable.
+- [Domain security](security/blockchalk-domain-security.yml): TLS/DNS/email posture probe.
+- [Examples](examples/): verbatim captured GeoRSS responses for San Francisco and New York.
+
+## Data shape
+
+A chalk is a feed item carrying a title (the message text), a permalink and matching guid
+using a 12-character hex id, an RFC 1123 pubDate, a georss:point with latitude and longitude,
+and a description holding a human-readable proximity label such as "on this block", "within
+a few blocks" or a named neighborhood like "in South of Market".
+
+## Provenance
+
+generated: 2026-07-20
+method: generated
+source: apis.yml plus the artifacts listed above; upstream evidence is the archived
+BlockChalk /developers page (2009-08-10) and captured /api/v0.6/chalks responses (2010).

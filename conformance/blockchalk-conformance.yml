@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: derived
+source:
+  - openapi/blockchalk-chalks-openapi.yml
+  - examples/blockchalk-chalks-v0.6-georss-san-francisco.xml
+  - http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+name: BlockChalk standards conformance
+status: retired
+standards:
+  - id: rss-2.0
+    conforms: true
+    evidence: >-
+      Captured /api/v0.6/chalks responses are well-formed RSS 2.0 documents with
+      rss/channel/title, link, description, language and item elements.
+  - id: georss
+    conforms: true
+    evidence: >-
+      Responses declare xmlns:georss="http://www.georss.org/georss" and every item carries a
+      georss:point element with a space-separated latitude/longitude pair.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth was documented or observed; the API was fully anonymous.
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery document or identity layer.
+  - id: rfc9457
+    conforms: false
+    evidence: No problem+json error envelope; no error reference was ever published.
+  - id: json-api
+    conforms: false
+    evidence: A JSON interface was documented but its payload shape was never captured and is not JSON:API.
+  - id: pagination
+    conforms: false
+    evidence: >-
+      No pagination parameters or link relations appear in the documented interfaces or the
+      captured feeds; results are an unbounded proximity-ordered list.
+  - id: idempotency
+    conforms: false
+    evidence: Read-only GET surface; no idempotency key mechanism was published.
+  - id: odata
+    conforms: false
+    evidence: Not an OData service.
+  - id: scim
+    conforms: false
+    evidence: No identity or provisioning surface.
+  - id: fhir
+    conforms: false
+    evidence: Not a healthcare API.
+  - id: fapi
+    conforms: false
+    evidence: Not a financial-grade API.
+  - id: psd2
+    conforms: false
+    evidence: Not a payments API.
+compliance_programs: []
+notes: >-
+  BlockChalk published no compliance certifications, audit reports or trust center. The
+  conformance recorded here is protocol-level only and reflects a retired 2009-2012 service.

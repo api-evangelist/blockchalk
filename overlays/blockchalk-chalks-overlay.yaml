@@ -1,0 +1,54 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the BlockChalk Chalks API
+  version: 1.0.0
+  description: >-
+    Overlay of API Evangelist annotations applied on top of
+    openapi/blockchalk-chalks-openapi.yml. It records the retirement posture and the
+    provenance of the underlying specification without mutating the reconstruction itself.
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source: openapi/blockchalk-chalks-openapi.yml
+extends: ../openapi/blockchalk-chalks-openapi.yml
+actions:
+  - target: $.info
+    description: Mark the API as retired and point at the supporting artifacts.
+    update:
+      x-lifecycle: retired
+      x-lifecycle-artifact: lifecycle/blockchalk-lifecycle.yml
+      x-authentication-artifact: authentication/blockchalk-authentication.yml
+      x-conventions-artifact: conventions/blockchalk-conventions.yml
+      x-data-model-artifact: data-model/blockchalk-data-model.yml
+      x-conformance-artifact: conformance/blockchalk-conformance.yml
+      x-integrable: false
+      x-integrable-reason: >-
+        blockchalk.com no longer resolves; this specification is historical documentation of
+        a 2009-2012 service, not an integrable API.
+  - target: $.servers[0]
+    description: Flag the historical host as unresolvable.
+    update:
+      x-resolves: false
+      x-probed: '2026-07-20'
+      x-probe-result: DNS resolution failure (no A record, delegated nameservers dead)
+  - target: $.paths['/api/v0.6/chalks/{coordinates}'].get
+    description: Attach the captured response evidence for the versioned chalks endpoint.
+    update:
+      x-evidence:
+        - examples/blockchalk-chalks-v0.6-georss-san-francisco.xml
+        - examples/blockchalk-chalks-v0.6-georss-new-york.xml
+      x-response-format: GeoRSS 2.0
+  - target: $.paths['/api/json/chalk'].get
+    description: Note that the JSON payload shape was never captured.
+    update:
+      x-schema-confidence: unknown
+      x-note: >-
+        The JSON interface is documented by the provider but no JSON response body survives,
+        so no payload schema is asserted.
+  - target: $.tags[?(@.name=='chalks')]
+    description: Enrich the chalks tag with the observed domain vocabulary.
+    update:
+      x-proximity-bands:
+        - right here
+        - on this block
+        - within a few blocks

@@ -1,0 +1,80 @@
+generated: '2026-07-20'
+method: derived
+source:
+  - openapi/blockchalk-chalks-openapi.yml
+  - examples/blockchalk-chalks-v0.6-georss-san-francisco.xml
+  - examples/blockchalk-chalks-v0.6-georss-new-york.xml
+name: BlockChalk data model
+status: retired
+summary: >-
+  BlockChalk exposed a single public entity: the chalk, a short message pinned to a
+  geographic point. The published read interfaces returned a flat feed of chalks with no
+  nested or referenced sub-resources, so the entity graph is intentionally shallow.
+entities:
+  - name: Chalk
+    description: A short public message pinned to a latitude/longitude, authored anonymously.
+    identifier:
+      field: guid
+      format: >-
+        Permalink URL whose final path segment is a 12-character lowercase hexadecimal
+        identifier, e.g. http://blockchalk.com/d7788df3e7b8
+      id_prefix: null
+    fields:
+      - name: title
+        type: string
+        description: The chalk body text as posted.
+      - name: link
+        type: uri
+        description: Permalink to the chalk on blockchalk.com.
+      - name: guid
+        type: uri
+        description: Unique identifier; observed identical to link.
+      - name: pubDate
+        type: string
+        description: RFC 1123 timestamp of when the chalk was posted.
+      - name: description
+        type: string
+        description: Human-readable proximity or neighborhood label relative to the query point.
+      - name: georss:point
+        type: string
+        description: Space-separated latitude and longitude of the chalk.
+    relationships: []
+  - name: Location
+    description: >-
+      An implicit query-time entity rather than a stored resource. The caller supplies a
+      latitude/longitude and the service resolves it to a proximity band and, where known, a
+      named neighborhood that it echoes back in each chalk's description.
+    identifier:
+      field: coordinates
+      format: 'latitude,longitude decimal degrees'
+    fields:
+      - name: latitude
+        type: number
+      - name: longitude
+        type: number
+    relationships:
+      - type: has_many
+        target: Chalk
+        via: coordinates
+        description: A queried location returns the chalks posted near it.
+observed_conventions:
+  proximity_bands:
+    - right here
+    - on this block
+    - within a few blocks
+  neighborhood_labels_observed:
+    - in South of Market
+    - in Lower Nob Hill
+  message_prefixes_observed:
+    description: >-
+      Users adopted informal leading tags to categorize chalks. These were a social
+      convention in the title text, not a structured field.
+    values:
+      - 'LAME'
+      - 'NICE:'
+      - 'FOR SALE:'
+      - 'EVENT:'
+      - '311:'
+notes: >-
+  No user, account, neighborhood or thread entity was ever exposed publicly, and no write
+  surface was documented, so there are no ownership or authorship relationships to record.

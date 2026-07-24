@@ -1,0 +1,14 @@
+{
+  "provider": "blockchalk",
+  "sources": [
+    "blockchalk-chalks-api-openapi.yml"
+  ],
+  "outputs": [
+    "blockchalk-chalks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

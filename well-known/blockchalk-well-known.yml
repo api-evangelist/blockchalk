@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: probed
+source: live HTTP probe of blockchalk.com
+name: BlockChalk well-known endpoints
+summary: >-
+  No well-known endpoints could be probed. blockchalk.com has an active domain registration
+  but its delegated nameservers (ns1/ns2.blockchalk.com) return no records, so every request
+  fails at DNS resolution before any HTTP exchange. Status 000 below means "no connection",
+  not "404".
+hosts:
+  - host: blockchalk.com
+    resolves: false
+    probes:
+      - path: /.well-known/security.txt
+        status: 000
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 000
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 000
+        file: null
+      - path: /.well-known/api-catalog
+        status: 000
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 000
+        file: null
+      - path: /llms.txt
+        status: 000
+        file: null
+found: []

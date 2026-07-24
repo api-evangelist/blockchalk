@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source:
+  - https://api.github.com/search/repositories?q=blockchalk
+  - https://registry.npmjs.org/-/v1/search?text=blockchalk
+  - https://pypi.org/pypi/blockchalk/json
+  - https://rubygems.org/api/v1/search.json?query=blockchalk
+name: BlockChalk client packages
+summary: >-
+  BlockChalk never published a first-party SDK or client library. Its developer page pointed
+  straight at three URL templates (XML, JSON, RSS) with no accompanying library. Registry
+  searches across npm, PyPI, RubyGems, Maven Central, NuGet, pkg.go.dev, Packagist and
+  crates.io return no BlockChalk client under any provenance. One community mobile client
+  exists on GitHub.
+registries_searched:
+  - npm
+  - PyPI
+  - RubyGems
+  - Maven Central
+  - NuGet
+  - pkg.go.dev
+  - Packagist
+  - crates.io
+official_sdks: []
+packages:
+  - name: blockchalk-webos
+    official: false
+    kind: application
+    language: JavaScript
+    registry: github
+    repository: https://github.com/lmorchard/blockchalk-webos
+    description: A community-built Palm webOS application for BlockChalk, published 2009-09-01 by Les Orchard.
+    status: archived
+notes: >-
+  Nothing here is first-party, so no SDKs pointer is emitted in apis.yml. The provider and its
+  API are retired.

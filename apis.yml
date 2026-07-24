@@ -1,8 +1,32 @@
 aid: blockchalk
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/blockchalk.png
 name: BlockChalk
-description: BlockChalk is a company surfaced as a portfolio company of battery-ventures and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  BlockChalk was a location-based neighborhood messaging service founded in 2009 by Stephen
+  Hood, the former product lead for Delicious, and Dave Baggeroer of the Stanford Institute of
+  Design. Users with GPS-enabled smartphones left short public messages called "chalks" pinned
+  to a specific geographic point, and read the chalks other people had left on their block, so
+  neighbors could ask, answer, praise, gripe, report potholes and lost pets, announce garage
+  sales and organize locally. The company raised $1M in seed financing in May 2010 from Joshua
+  Schachter, Battery Ventures, Founder Collective, Harrison Metal, Mitch Kapor, Josh Stylman,
+  Tom McInerney and David Liu. BlockChalk published a small read-only public API on its
+  developer page, offering XML, JSON and RSS interfaces that returned nearby chalks for a
+  supplied latitude and longitude, later joined by a versioned GeoRSS endpoint. The product
+  and the company are retired: blockchalk.com holds an active domain registration but its
+  delegated nameservers no longer resolve, and no BlockChalk host answers on the public
+  internet. This profile preserves the historical API surface as documentation.
 url: https://raw.githubusercontent.com/api-evangelist/blockchalk/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,12 +34,61 @@ x-backed-by:
 - battery-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: retired
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Location
+- Geolocation
+- Social
+- Messaging
+- Local
+- Neighborhood
+- Mobile
+- Retired
+apis:
+- aid: blockchalk:blockchalk-chalks-api
+  name: BlockChalk chalks API
+  description: Location-pinned neighborhood messages.
+  humanURL: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+  baseURL: http://blockchalk.com/api
+  tags:
+  - chalks
+  properties:
+  - type: OpenAPI
+    url: openapi/blockchalk-chalks-api-openapi.yml
+  - type: Examples
+    url: examples/blockchalk-chalks-v0.6-georss-san-francisco.xml
+  - type: Authentication
+    url: authentication/blockchalk-authentication.yml
+  - type: Conventions
+    url: conventions/blockchalk-conventions.yml
+  - type: DataModel
+    url: data-model/blockchalk-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/blockchalk-lifecycle.yml
+  - type: Conformance
+    url: conformance/blockchalk-conformance.yml
+common:
+- type: Documentation
+  url: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+- type: APIReference
+  url: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+- type: Packages
+  url: packages/blockchalk-packages.yml
+- type: WellKnown
+  url: well-known/blockchalk-well-known.yml
+- type: DomainSecurity
+  url: security/blockchalk-domain-security.yml
+- type: LLMsTxt
+  url: llms/blockchalk-llms.txt
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

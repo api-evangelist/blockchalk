@@ -1,0 +1,72 @@
+generated: '2026-07-20'
+method: derived
+source:
+  - openapi/blockchalk-chalks-openapi.yml
+  - authentication/blockchalk-authentication.yml
+  - lifecycle/blockchalk-lifecycle.yml
+  - http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+name: BlockChalk API conventions
+status: retired
+summary: >-
+  BlockChalk's public API predates most of the cross-cutting conventions this artifact
+  normally records. It was a read-only, anonymous, unpaginated geo-query returning feed
+  formats. Recording the absences honestly is the point: almost every runtime semantic below
+  is "not published".
+auth:
+  style: none
+  detail: Anonymous public reads. See authentication/blockchalk-authentication.yml.
+idempotency:
+  supported: false
+  header: null
+  detail: Read-only GET surface; no idempotency key was ever published.
+pagination:
+  supported: false
+  style: none
+  params: []
+  response_fields: []
+  detail: >-
+    Responses are a single unbounded feed of nearby chalks with no cursor, page, offset or
+    limit parameter and no next-link relation.
+filtering:
+  supported: true
+  detail: >-
+    The only filter is geographic. Unversioned interfaces take long and lat query parameters;
+    the v0.6 interface takes a single comma-joined "latitude,longitude" path segment.
+field_expansion:
+  supported: false
+sparse_fields:
+  supported: false
+metadata:
+  supported: false
+request_id:
+  supported: false
+  detail: No request-id or correlation header was documented or observed in captured responses.
+versioning:
+  style: path
+  detail: >-
+    The 2009 interfaces were unversioned (/api/xml/chalk); a later /api/v0.6/ path prefix
+    appeared by 2010. See lifecycle/blockchalk-lifecycle.yml.
+content_negotiation:
+  style: path
+  detail: >-
+    Format is selected by URL path rather than by an Accept header: /api/xml/chalk,
+    /api/json/chalk and /rss/chalk are three distinct paths for the same query.
+error_envelope:
+  format: none
+  detail: >-
+    No error contract was published and no non-2xx response was captured, so there is no
+    error envelope to describe. See errors/ (absent by design).
+rate_limiting:
+  published: false
+  headers: []
+  detail: No rate limit, quota or throttling signal was documented.
+transport:
+  scheme: http
+  tls: false
+  detail: >-
+    Every documented endpoint and every captured request used plain http://. No HTTPS
+    endpoint was published.
+caching:
+  detail: >-
+    Feed formats imply polling as the consumption model, but no explicit cache-control,
+    ETag or conditional-request guidance was published.

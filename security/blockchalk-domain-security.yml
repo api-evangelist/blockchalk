@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of blockchalk.com
+name: BlockChalk domain security posture
+summary: >-
+  blockchalk.com cannot be assessed for transport or email security because it does not
+  resolve. The registration is active (registrar ERANET INTERNATIONAL LIMITED, created
+  2009-07-20, expiring 2028-07-20) and delegates to ns1.blockchalk.com and
+  ns2.blockchalk.com, but those nameservers answer nothing, so every record type below comes
+  back empty and no TLS handshake is possible. This is the expected result for a retired
+  service, not a misconfiguration finding against a live provider.
+hosts:
+- host: blockchalk.com
+  resolves: false
+  https: false
+  http_status: 000
+  tls: not-testable
+  hsts: not-testable
+- host: www.blockchalk.com
+  resolves: false
+  https: false
+  http_status: 000
+  tls: not-testable
+  hsts: not-testable
+- host: api.blockchalk.com
+  resolves: false
+  https: false
+  http_status: 000
+  tls: not-testable
+  hsts: not-testable
+domains:
+- domain: blockchalk.com
+  registered: true
+  registrar: ERANET INTERNATIONAL LIMITED
+  created: '2009-07-20'
+  expires: '2028-07-20'
+  nameservers:
+  - ns1.blockchalk.com
+  - ns2.blockchalk.com
+  nameservers_responding: false
+  a_record: false
+  soa: false
+  dnssec: false
+  ds: []
+  caa: []
+  mx: []
+  spf: false
+  dmarc: false
+  dmarc_policy: null
+notes: >-
+  An earlier automated pass attributed web.archive.org and archive.org results to this
+  provider because the only reachable humanURL in apis.yml is a Wayback Machine link. That
+  attribution was incorrect and has been removed; nothing in this file describes any host
+  other than BlockChalk's own.

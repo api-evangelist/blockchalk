@@ -1,0 +1,67 @@
+generated: '2026-07-20'
+method: searched
+source:
+  - http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
+  - https://techcrunch.com/2010/05/27/blockchalk-1-million/
+  - whois blockchalk.com
+name: BlockChalk API lifecycle
+status: retired
+summary: >-
+  BlockChalk was a location-based neighborhood messaging service launched in 2009 and funded
+  in 2010. Its public read APIs are retired along with the product. The blockchalk.com domain
+  registration is still active (registrar ERANET INTERNATIONAL LIMITED, expires 2028-07-20)
+  but the delegated nameservers ns1/ns2.blockchalk.com do not resolve, so no BlockChalk host
+  answers on the public internet.
+versioning:
+  scheme: path
+  observed_versions:
+    - version: unversioned
+      paths:
+        - /api/xml/chalk
+        - /api/json/chalk
+        - /rss/chalk
+      evidence: Documented on the BlockChalk /developers page (archived 2009-08-10).
+    - version: v0.6
+      paths:
+        - /api/v0.6/chalks/{latitude},{longitude}
+      evidence: Captured 200 responses dated 2010-03 through 2010-09.
+  stability_statement: >-
+    BlockChalk published this warning on its own developer page: "these interfaces are early
+    prototypes and are likely to change in the future." No stability or compatibility
+    guarantee was ever offered.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  notes: >-
+    No RFC 8594 Sunset/Deprecation signaling and no published deprecation policy were found.
+    The API went away with the company rather than through an announced deprecation.
+sla:
+  published: false
+status_page:
+  published: false
+probes:
+  date: '2026-07-20'
+  results:
+    - target: https://blockchalk.com/
+      status: 000
+      note: DNS resolution failure, no A record.
+    - target: https://www.blockchalk.com/
+      status: 000
+      note: DNS resolution failure.
+    - target: https://api.blockchalk.com/
+      status: 000
+      note: DNS resolution failure.
+timeline:
+  - date: '2009-07-20'
+    event: blockchalk.com domain registered.
+  - date: '2009-08'
+    event: Public /developers page documents XML, JSON and RSS chalk interfaces.
+  - date: '2010-01-08'
+    event: TechCrunch covers the launch of BlockChalk as location-based sidewalk chalk.
+  - date: '2010-05-27'
+    event: BlockChalk announces $1M seed financing (Joshua Schachter, Battery Ventures, Founder Collective, Harrison Metal, Mitch Kapor and others).
+  - date: '2010-09'
+    event: Last captured 200 response from the /api/v0.6/chalks endpoint.
+  - date: '2026-07-20'
+    event: Domain registered but unresolvable; product and APIs confirmed retired.
