@@ -72,6 +72,8 @@ apis:
   - type: Conformance
     url: conformance/blockchalk-conformance.yml
 common:
+- type: Overlay
+  url: overlays/blockchalk-chalks-overlay.yaml
 - type: Documentation
   url: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
 - type: APIReference
