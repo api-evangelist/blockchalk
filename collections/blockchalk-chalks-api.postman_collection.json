@@ -1,0 +1,410 @@
+{
+  "item": [
+    {
+      "id": "6618e513-b242-4061-9587-ee8cab5db165",
+      "name": "chalks",
+      "description": {
+        "content": "Location-pinned neighborhood messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd889ad2-c290-43ba-9253-4181b21c6ab0",
+          "name": "List chalks near a coordinate pair",
+          "request": {
+            "name": "List chalks near a coordinate pair",
+            "description": {
+              "content": "Returns the chalks posted near a latitude/longitude, as a GeoRSS 2.0 feed. The path parameter is a single comma-joined \"latitude,longitude\" segment, e.g. 37.7749295,-122.4194155. Observed responses carry rss/channel/item entries with a georss:point, guid, link, title, pubDate and a human-readable proximity description (\"on this block\", \"within a few blocks\", \"in South of Market\").",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0.6",
+                "chalks",
+                ":coordinates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coordinates",
+                  "description": "(Required) Comma-joined latitude and longitude, e.g. \"37.7749295,-122.4194155\"."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/rss+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b1b6043-c259-4988-9537-2a5bb453bc89",
+              "name": "A GeoRSS 2.0 feed of nearby chalks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0.6",
+                    "chalks",
+                    ":coordinates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coordinates",
+                      "description": "(Required) Comma-joined latitude and longitude, e.g. \"37.7749295,-122.4194155\"."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/rss+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/rss+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "841e218c-d46d-40f1-9d81-bd3d33ce559a",
+          "name": "List chalks near a point (XML)",
+          "request": {
+            "name": "List chalks near a point (XML)",
+            "description": {
+              "content": "Documented on the BlockChalk developer page as the XML interface.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "xml",
+                "chalk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "long",
+                  "value": "<double>",
+                  "description": "(Required) Longitude of the point to read chalks around."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Latitude of the point to read chalks around."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc57f2a3-1b8b-4eea-a78f-931d66b96b24",
+              "name": "XML document of nearby chalks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "xml",
+                    "chalk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "long",
+                      "value": "-122.4194155"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "37.7749295"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1ff56c7-17e3-4784-9d3a-ce30d8552d29",
+          "name": "List chalks near a point (JSON)",
+          "request": {
+            "name": "List chalks near a point (JSON)",
+            "description": {
+              "content": "Documented on the BlockChalk developer page as the JSON interface. No JSON response body was captured before the service retired, so no response schema is asserted here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "json",
+                "chalk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "long",
+                  "value": "<double>",
+                  "description": "(Required) Longitude of the point to read chalks around."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Latitude of the point to read chalks around."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f2319c5-6ab5-40f0-9068-cc1ddbb1ad2d",
+              "name": "JSON document of nearby chalks. Payload shape not captured.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "json",
+                    "chalk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "long",
+                      "value": "-122.4194155"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "37.7749295"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d834bef0-e200-44cb-b780-ab3c32b08d39",
+          "name": "Subscribe to chalks near a point (RSS)",
+          "request": {
+            "name": "Subscribe to chalks near a point (RSS)",
+            "description": {
+              "content": "Documented on the BlockChalk developer page as the RSS interface.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rss",
+                "chalk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "long",
+                  "value": "<double>",
+                  "description": "(Required) Longitude of the point to read chalks around."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Latitude of the point to read chalks around."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/rss+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd1a577b-dc38-4c61-99c8-8d97d9335929",
+              "name": "RSS 2.0 feed of nearby chalks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rss",
+                    "chalk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "long",
+                      "value": "-122.4194155"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "37.7749295"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/rss+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/rss+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://blockchalk.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d402c42b-f426-44ec-be70-fdfc7faaa8b4",
+    "name": "BlockChalk API (historical) chalks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reconstruction of the public read-only BlockChalk API as it was documented by BlockChalk on its own /developers page and as observed in captured live responses. BlockChalk was a location-based neighborhood messaging service (2009-2012); a \"chalk\" was a short message pinned to a geographic point. The service is retired and none of these hosts resolve today (blockchalk.com has no active nameservers as of 2026-07-20), so this specification is historical documentation, not an integrable API.\nEndpoint shapes come verbatim from the archived BlockChalk developer page:\n  XML:  http://blockchalk.com/api/xml/chalk?long=[longitude]&lat=[latitude]\n  JSON: http://blockchalk.com/api/json/chalk?long=[longitude]&lat=[latitude]\n  RSS:  http://blockchalk.com/rss/chalk?long=[longitude]&lat=[latitude]\nA later versioned path, /api/v0.6/chalks/{latitude},{longitude}, is evidenced by captured 200 responses (GeoRSS 2.0). BlockChalk itself warned these interfaces were \"early prototypes and are likely to change\".\n\nContact Support:\n Name: API Evangelist\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

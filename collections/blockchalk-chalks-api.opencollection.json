@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BlockChalk API (historical) chalks API",
+    "version": "0.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "chalks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List chalks near a coordinate pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://blockchalk.com/api/v0.6/chalks/:coordinates",
+            "params": [
+              {
+                "name": "coordinates",
+                "value": "37.7749295,-122.4194155",
+                "type": "path",
+                "description": "Comma-joined latitude and longitude, e.g. \"37.7749295,-122.4194155\"."
+              }
+            ]
+          },
+          "docs": "Returns the chalks posted near a latitude/longitude, as a GeoRSS 2.0 feed. The path parameter is a single comma-joined \"latitude,longitude\" segment, e.g. 37.7749295,-122.4194155. Observed responses carry rss/channel/item entries with a georss:point, guid, link, title, pubDate and a human-readable proximity description (\"on this block\", \"within a few blocks\", \"in South of Market\")."
+        },
+        {
+          "info": {
+            "name": "List chalks near a point (XML)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://blockchalk.com/api/xml/chalk",
+            "params": [
+              {
+                "name": "long",
+                "value": "-122.4194155",
+                "type": "query",
+                "description": "Longitude of the point to read chalks around."
+              },
+              {
+                "name": "lat",
+                "value": "37.7749295",
+                "type": "query",
+                "description": "Latitude of the point to read chalks around."
+              }
+            ]
+          },
+          "docs": "Documented on the BlockChalk developer page as the XML interface."
+        },
+        {
+          "info": {
+            "name": "List chalks near a point (JSON)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://blockchalk.com/api/json/chalk",
+            "params": [
+              {
+                "name": "long",
+                "value": "-122.4194155",
+                "type": "query",
+                "description": "Longitude of the point to read chalks around."
+              },
+              {
+                "name": "lat",
+                "value": "37.7749295",
+                "type": "query",
+                "description": "Latitude of the point to read chalks around."
+              }
+            ]
+          },
+          "docs": "Documented on the BlockChalk developer page as the JSON interface. No JSON response body was captured before the service retired, so no response schema is asserted here."
+        },
+        {
+          "info": {
+            "name": "Subscribe to chalks near a point (RSS)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://blockchalk.com/rss/chalk",
+            "params": [
+              {
+                "name": "long",
+                "value": "-122.4194155",
+                "type": "query",
+                "description": "Longitude of the point to read chalks around."
+              },
+              {
+                "name": "lat",
+                "value": "37.7749295",
+                "type": "query",
+                "description": "Latitude of the point to read chalks around."
+              }
+            ]
+          },
+          "docs": "Documented on the BlockChalk developer page as the RSS interface."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
