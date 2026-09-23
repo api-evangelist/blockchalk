@@ -2,7 +2,7 @@ overlay: 1.0.0
 info:
   title: API Evangelist enhancements for the BlockChalk Chalks API
   version: 1.0.0
-  description: >-
+  x-description: >-
     Overlay of API Evangelist annotations applied on top of
     openapi/blockchalk-chalks-openapi.yml. It records the retirement posture and the
     provenance of the underlying specification without mutating the reconstruction itself.

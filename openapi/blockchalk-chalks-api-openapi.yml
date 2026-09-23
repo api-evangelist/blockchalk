@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BlockChalk API (historical) chalks API
-  description: "Reconstruction of the public read-only BlockChalk API as it was documented by BlockChalk on its own /developers page and as observed in captured live responses. BlockChalk was a location-based neighborhood messaging service (2009-2012); a \"chalk\" was a short message pinned to a geographic point. The service is retired and none of these hosts resolve today (blockchalk.com has no active nameservers as of 2026-07-20), so this specification is historical documentation, not an integrable API.\nEndpoint shapes come verbatim from the archived BlockChalk developer page:\n  XML:  http://blockchalk.com/api/xml/chalk?long=[longitude]&lat=[latitude]\n  JSON: http://blockchalk.com/api/json/chalk?long=[longitude]&lat=[latitude]\n  RSS:  http://blockchalk.com/rss/chalk?long=[longitude]&lat=[latitude]\nA later versioned path, /api/v0.6/chalks/{latitude},{longitude}, is evidenced by captured 200 responses (GeoRSS 2.0). BlockChalk itself warned these interfaces were \"early prototypes and are likely to change\"."
+  title: BlockChalk API (historical) Chalks API
+  description: Reconstruction of the public read-only BlockChalk API as it was documented by BlockChalk on its own /developers page and as observed in captured live responses.
   version: 0.6.0
   x-status: retired
   x-provenance:
@@ -99,15 +99,6 @@ paths:
                 type: string
 components:
   parameters:
-    Latitude:
-      name: lat
-      in: query
-      required: true
-      description: Latitude of the point to read chalks around.
-      schema:
-        type: number
-        format: double
-      example: 37.7749295
     Longitude:
       name: long
       in: query
@@ -117,3 +108,12 @@ components:
         type: number
         format: double
       example: -122.4194155
+    Latitude:
+      name: lat
+      in: query
+      required: true
+      description: Latitude of the point to read chalks around.
+      schema:
+        type: number
+        format: double
+      example: 37.7749295
