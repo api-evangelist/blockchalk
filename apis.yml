@@ -61,7 +61,7 @@ tags:
 - Retired
 apis:
 - aid: blockchalk:blockchalk-chalks-api
-  name: BlockChalk chalks API
+  name: BlockChalk Chalks API
   description: Location-pinned neighborhood messages.
   humanURL: http://web.archive.org/web/20090810213933/http://blockchalk.com/developers
   baseURL: http://blockchalk.com/api

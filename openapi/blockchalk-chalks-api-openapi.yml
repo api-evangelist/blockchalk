@@ -99,15 +99,6 @@ paths:
                 type: string
 components:
   parameters:
-    Longitude:
-      name: long
-      in: query
-      required: true
-      description: Longitude of the point to read chalks around.
-      schema:
-        type: number
-        format: double
-      example: -122.4194155
     Latitude:
       name: lat
       in: query
@@ -117,3 +108,12 @@ components:
         type: number
         format: double
       example: 37.7749295
+    Longitude:
+      name: long
+      in: query
+      required: true
+      description: Longitude of the point to read chalks around.
+      schema:
+        type: number
+        format: double
+      example: -122.4194155
