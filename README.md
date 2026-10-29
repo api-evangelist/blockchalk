@@ -64,6 +64,65 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BlockChalk is a company surfaced as a portfolio company of battery-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
 
-Backed by: battery-ventures
+**Status:** retired
+
+BlockChalk was a location-based neighborhood messaging service founded in 2009 by Stephen Hood, the former product lead for Delicious, and Dave Baggeroer of the Stanford Institute of Design. Users with GPS-enabled smartphones left short public messages called "chalks" pinned to a specific geographic point, and read the chalks other people had left on their block, so neighbors could ask, answer, praise, gripe, report potholes and lost pets, announce garage sales and organize locally. The company raised $1M in seed financing in May 2010 from Joshua Schachter, Battery Ventures, Founder Collective, Harrison Metal, Mitch Kapor, Josh Stylman, Tom McInerney and David Liu. BlockChalk published a small read-only public API on its developer page, offering XML, JSON and RSS interfaces that returned nearby chalks for a supplied latitude and longitude, later joined by a versioned GeoRSS endpoint. The product and the company are retired: blockchalk.com holds an active domain registration but its delegated nameservers no longer resolve, and no BlockChalk host answers on the public internet. This profile preserves the historical API surface as documentation.
+
+**Areas:** Company · Location · Geolocation · Social · Messaging · Local · Neighborhood · Mobile · Retired
+
+## BlockChalk on APIs.io (historical record)
+
+Everything profiled for BlockChalk is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/blockchalk/](https://apis.io/providers/blockchalk/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [BlockChalk Chalks API](https://apis.io/apis/blockchalk/blockchalk-chalks-api/) — Location-pinned neighborhood messages.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Collections (1)
+
+Postman and Open Collection request collections.
+
+- [BlockChalk API (historical) chalks API](https://apis.io/collections/blockchalk/open-blockchalk-chalks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Blockchalk Chalks Overlay](https://apis.io/overlays/blockchalk/blockchalk-chalks-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Blockchalk Authentication](https://apis.io/security/blockchalk/blockchalk-authentication/)
+- [Blockchalk Domain Security](https://apis.io/security/blockchalk/blockchalk-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.archive.org/)
+- [Documentation](http://web.archive.org/web/20090810213933/http://blockchalk.com/developers)
+- [API reference](http://web.archive.org/web/20090810213933/http://blockchalk.com/developers)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BlockChalk: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/blockchalk/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
